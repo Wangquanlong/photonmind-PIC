@@ -37,4 +37,4 @@ Radius of Grating | 25 μm
 Waveguide Width | 0.5 μm
 Fiber Angle | 14°
 Excited Mode | TM0
-Bandwidth |
+Bandwidth | 1.4 to 1.7 μm
