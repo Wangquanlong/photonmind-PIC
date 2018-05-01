@@ -14,9 +14,9 @@ classdef Model
 
         function y = infer(obj, features)
             y = features;
-            for n = 1:length(weights)
-                y = y*obj.weights(n) + obj.biases(n);
-                y = obj.ACT(y, activation_functions(n + 1))
+            for n = 1:length(obj.weights)
+                y = y*obj.weights{n} + obj.biases{n};
+                y = obj.ACT(y, obj.activation_functions(n + 1))
             end
             y = obj.descale(y);
         end
