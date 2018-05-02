@@ -3,6 +3,7 @@ classdef Device < handle
         model
         constants
         conditions
+        matches
         features
     end
     methods
@@ -31,13 +32,17 @@ classdef Device < handle
         function solve(obj, resolution)
             v = waitbar(0, 'Solving...');
 
+            obj.matches = {};
             featureset = obj.get_uniform_featureset(resolution);
 
             for n = 1:length(featureset)
                 waitbar(n/length(featureset));
                 features = featureset(n, :);
                 labels = obj.model.infer(features);
-                if obj.check_conditions(labels), obj.print_device(features, labels); end
+                if obj.check_conditions(labels)
+                    obj.matches{end + 1} = features;
+                    obj.print_device(features, labels, length(obj.matches));
+                end
             end
 
             close(v);
@@ -68,20 +73,26 @@ classdef Device < handle
             end
         end
 
-        function print_device(obj, features, labels)
+        function print_device(obj, features, labels, match_num)
+            disp(['Match #', num2str(match_num)]);
             for n = 1:length(obj.model.inputs)
                 disp([obj.model.inputs(n).parameter, ' = ', num2str(features(n))]);
             end
-
             for n = 1:length(obj.model.outputs)
                 disp([obj.model.outputs(n).attribute, ' = ', num2str(labels(n))]);
             end
-
             fprintf('\n');
         end
 
-        function set_features(obj, features)
-            obj.features = features;
+        function set_features(obj, match_num)
+            obj.features = cell2mat(obj.matches(match_num));
+        end
+
+        function y = run(obj)
+            y = obj.model.infer(obj.features);
+            for n = 1:length(obj.model.outputs)
+                disp([obj.model.outputs(n).attribute, ' = ', num2str(y(n))]);
+            end
         end
     end
 end
