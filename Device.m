@@ -79,5 +79,9 @@ classdef Device < handle
 
             fprintf('\n');
         end
+
+        function set_features(obj, features)
+            obj.features = features;
+        end
     end
 end
