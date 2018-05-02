@@ -20,12 +20,12 @@ classdef Model < handle
         end
 
         function y = infer(obj, features)
-            y = obj.scale(features);
+            y = obj.scale_features(features);
             for n = 1:length(obj.weights)
                 y = y*obj.weights{n} + obj.biases{n};
                 y = obj.ACT(y, obj.activation_functions{n + 1});
             end
-            y = obj.descale(y);
+            y = obj.descale_labels(y);
         end
 
         function y = ACT(obj, x, activation_function)
@@ -41,11 +41,11 @@ classdef Model < handle
             end
         end
 
-        function y = scale(obj, x)
+        function y = scale_features(obj, x)
             y = (x - obj.feature_ranges(1, :))./(obj.feature_ranges(2, :) - obj.feature_ranges(1, :));
         end
 
-        function y = descale(obj, x)
+        function y = descale_labels(obj, x)
             y = obj.label_ranges(1, :) + x.*(obj.label_ranges(2, :) - obj.label_ranges(1, :));
         end
     end
