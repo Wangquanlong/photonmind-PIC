@@ -48,5 +48,18 @@ classdef Model < handle
         function y = descale_labels(obj, x)
             y = obj.label_ranges(1, :) + x.*(obj.label_ranges(2, :) - obj.label_ranges(1, :));
         end
+
+        function about(obj)
+            disp('Inputs');
+            for n = 1:length(obj.inputs)
+                disp([obj.inputs(n).structure, ' ', obj.inputs(n).parameter, ' range = ',...
+                    num2str(obj.inputs(n).range(1)), ' to ', num2str(obj.inputs(n).range(2))]);
+            end
+            fprintf('\n');
+            disp('Outputs');
+            for n = 1:length(obj.outputs)
+                disp([obj.outputs(n).port, ': ', obj.outputs(n).attribute]);
+            end
+        end
     end
 end
