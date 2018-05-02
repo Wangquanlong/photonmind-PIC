@@ -9,12 +9,12 @@ The PhotonMind-PIC library in `pm-pic.mat` includes pretrained ANN models of com
 **Note:** These models are works in progress. The parameters of each device, simulation, and trained network may be changed at any time as we continue to improve on the platform. Please refer to the following list for detailed information on each model.
 
 ### grating_coupler_SOI
-The silicon-on-insulator (SOI) grating coupler is a fundamental component in silicon photonics. It offers a convenient way to couple light between an optical fibre and the photonic chip; however, its performance is highly dependent on the wavelength, polarization, and angle of the incident light—among other ßfactors. PhotonMind-PIC uses the following variable parameters to optimize for different required outputs.
+The silicon-on-insulator (SOI) grating coupler is a fundamental component in silicon photonics. It offers a convenient way to couple light between an optical fibre and the photonic chip; however, its performance is highly dependent on the wavelength, polarization, and angle of the incident light—among other factors. PhotonMind-PIC uses the following variable parameters to optimize for different required outputs.
 
 Variable Parameter | Range
 --------- | -----
 Etch Depth | 0 to 0.22 μm
-Duty Cycle | 0.4 to 0.8
+Duty Cycle | 0.6 to 0.7
 Pitch | 0.5 to 0.7 μm
 
 Output | Unit | Type
