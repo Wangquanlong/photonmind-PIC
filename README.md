@@ -14,7 +14,7 @@ The silicon-on-insulator (SOI) grating coupler is a fundamental component in sil
 
 ![Image of grating_coupler_SOI](https://github.com/Dusandinho/photonmind-PIC/blob/master/model_images/grating_coupler_SOI.png?raw=true)
 
-<img src="https://github.com/Dusandinho/photonmind-PIC/blob/master/model_images/grating_coupler_SOI.png?raw=true" width="48">
+<img src="https://github.com/Dusandinho/photonmind-PIC/blob/master/model_images/grating_coupler_SOI.png?raw=true" width="200">
 
 `grating_coupler_SOI` is a focusing grating that is trained with variable parameters in the table below.
 
