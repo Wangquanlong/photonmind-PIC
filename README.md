@@ -12,13 +12,9 @@ The PhotonMind-PIC library in `pm-pic.mat` includes pretrained ANN models of com
 ### grating_coupler_SOI
 The silicon-on-insulator (SOI) grating coupler is a fundamental component in silicon photonics. It offers a convenient way to couple light between an optical fibre and a photonic chip; however, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SOI` model, new designs can be found instantaneously.
 
-<<<<<<< HEAD
-![Image of grating_coupler_SOI](https://github.com/Dusandinho/photonmind-PIC/blob/master/model_images/grating_coupler_SOI.png?raw=true | width=10)
-=======
 <img src="https://github.com/Dusandinho/photonmind-PIC/blob/master/model_images/grating_coupler_SOI.png?raw=true" width="400">
->>>>>>> 7d642830a480a071fb5b0eaba816d517499214b8
 
-`grating_coupler_SOI` is a focusing grating that is trained with variable parameters in the table below.
+`grating_coupler_SOI` is a focusing grating that is trained with the variable parameters in the table below.
 
 Variable Parameter | Range
 ------------------ | ----
