@@ -23,7 +23,7 @@ Pitch | 0.5 to 0.7 μm
 Output | Unit | Type
 ------ | ---- | ----
 Max Transmission | N/A | 1x1 Double
-Center Wavelength | μm | 1x1 Double
+Center Wavelength | m | 1x1 Double
 
 Constant Parameter | Value
 ------------------ | -----
@@ -54,3 +54,6 @@ Time | Autoshutoff
 Training Results | Value
 ---------------- | -----
 Test Error | 8.2%
+
+## License
+This project is licensed under the Apache-2.0 License - see the [LICENSE](LICENSE) file for details
