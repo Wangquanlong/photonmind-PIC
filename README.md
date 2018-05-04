@@ -27,19 +27,21 @@ Center Wavelength | μm | 1x1 Double
 
 Constant Parameter | Value
 ------------------ | -----
+Wavelength Range | 1.4 to 1.7 μm
+Excited Mode | TM0
 Core Material | Silicon
 Core Thickness | 0.22 μm
-Top Cladding Material | Air
+Top Cladding Material | Silicon Dioxide
+Top Cladding Thickness | ∞
 Bottom Cladding Material | Silicon Dioxide
 Bottom Cladding Thickness | 3 μm
-Length | 25 μm
-Width | 15 μm
+Taper Length | 25 μm
+Taper Width | 15 μm
+Number of Gratings |
 Radius of Grating | 25 μm
 Waveguide Width | 0.5 μm
-Fiber Angle | 14°
-Fiber–Grating Gap |
-Excited Mode | TM0
-Wavelength Range | 1.4 to 1.7 μm
+Fiber Angle | 13°
+Fiber–Grating Gap | 1 μm
 
 Simulation Parameter | Value
 -------------------- | -----
@@ -47,4 +49,8 @@ Solver | Lumerical FDTD
 Dimension | 3D
 Mesh Size |
 Boundary Type | PML
-Time | > Autoshutoff
+Time | Autoshutoff
+
+Training Results | Value
+---------------- | -----
+Test Error | 8.2%
