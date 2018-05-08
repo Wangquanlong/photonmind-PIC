@@ -47,7 +47,7 @@ Simulation Parameter | Value
 -------------------- | -----
 Solver | Lumerical FDTD
 Dimension | 3D
-Mesh Size |
+Mesh Size | ~6 Mesh Points per Wavelength
 Boundary Type | PML
 Time | Autoshutoff
 
