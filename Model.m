@@ -19,8 +19,9 @@ classdef Model < handle
             obj.label_ranges = label_ranges;
         end
 
-        % send features through the model to predict the labels
+        % send features through the trained model to predict the labels
         % this is where we tap into PhotonMind
+        % there may be a cleaner way to do this using a Layer class
         function y = infer(obj, features)
             y = obj.scale_features(features);
             for n = 1:length(obj.weights)
@@ -30,7 +31,7 @@ classdef Model < handle
             y = obj.descale_labels(y);
         end
 
-        % quickly display information about the model
+        % quickly display relevant information about the trained model
         function about(obj)
             disp('Inputs');
             for n = 1:length(obj.inputs)
@@ -45,18 +46,21 @@ classdef Model < handle
         end
     end
     methods (Access = private)
-        % inference requires values from 0 to 1
+        % inference and training use (need) normalized features
+        % this function scales features to 0 to 1 (the standard for PhotonMind)
         function y = scale_features(obj, x)
             y = (x - obj.feature_ranges(1, :))./(obj.feature_ranges(2, :) - obj.feature_ranges(1, :));
         end
 
-        % get real values from scaled values
+        % this function scales labels from 0 to 1 (the standard for PhotonMind)
         function y = descale_labels(obj, x)
             y = obj.label_ranges(1, :) + x.*(obj.label_ranges(2, :) - obj.label_ranges(1, :));
         end
 
-        % activation function used in inference
-        % 'none' is usually used in input and output layers
+        % activation functions used in inference
+        % 'tanh' should only be used for networks that use -1 to 1 scaling
+        % 'none' is usually used in the input and output layers
+        % more functions are welcome, but these seem to be the most popular for regression
         function y = ACT(obj, x, activation_function)
             switch activation_function
                 case 'sig'
