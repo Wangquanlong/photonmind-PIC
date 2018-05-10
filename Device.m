@@ -31,10 +31,11 @@ classdef Device < handle
             obj.conditions(index).tolerance = [];
         end
 
-        % simple parametric sweep that finds all possible devices
+        % simple parametric sweep that finds all device matches
         % sweep size grows exponentially with resolution
         function solve(obj, resolution)
             if isempty(obj.conditions), error('Must have at least one condition'); end
+
             v = waitbar(0, 'Solving...');
 
             obj.matches = {};
@@ -49,7 +50,6 @@ classdef Device < handle
                     obj.print_device(features, labels, length(obj.matches));
                 end
             end
-
             close(v);
         end
 
@@ -99,6 +99,7 @@ classdef Device < handle
 
         % print information about the found device
         function print_device(obj, features, labels, match_num)
+            fprintf('\n');
             disp(['Match #', num2str(match_num)]);
             for n = 1:length(obj.model.inputs)
                 disp([obj.model.inputs(n).parameter, ' = ', num2str(features(n))]);
@@ -106,7 +107,6 @@ classdef Device < handle
             for n = 1:length(obj.model.outputs)
                 disp([obj.model.outputs(n).attribute, ' = ', num2str(labels(n))]);
             end
-            fprintf('\n');
         end
     end
 end

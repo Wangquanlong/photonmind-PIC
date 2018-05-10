@@ -32,9 +32,9 @@ A blank device called `gc` has now been created. In order to solve for the param
 >> gc.add_condition(2, 1.65e-6, 0.01e-6)
 ```
 
-The first value passed into `add_condition` is the index of the output we are tying the condition to. The deep neural network used to train the model orders the outputs in a way consistent to this, the tables shown in [The Library](#heading-1), and the list produced by `Model.about`. The second and third values passed are the target and tolerance values, respectively.
+The first value passed into `add_condition` is the index of the output we tie the condition to. The deep neural network used to train the model, the tables shown in **The Library**, and the list produced by `Model.about` are all indexed in a consistent manner. The second and third values passed to the function are the target and tolerance values, respectively.
 
-We then solve for the device parameters that meet this condition, using the built-in parametric sweep. Note that you can use your own optimization script instead, using `Model.infer` to run inference of the model. We will solve using a resolution of 5:
+We then solve for the device parameters that meet this condition, using the built-in parametric sweep. Note that you can use your own optimization script instead, using `Model.infer` to run inference on the model. In this example, we solve using a sweep resolution of 5:
 
 ```
 >> gc.solve(5)
@@ -61,13 +61,13 @@ T_min = -0.34356
 lam_T_min = 1.6523e-06
 ```
 
-The information of each device that matches the condition is printed. As the resolution of the solver is increased, more matches will be found. From there, it may be helpful to add another condition (i.e., for minimum transmission). Constants can also be set. For example, if your fabrication process does not allow for partial etching:
+The information of each device that matches the condition is printed. As the resolution of the solver is increased, more matches will be found. From there, it may be helpful to add another condition (i.e., for `T_min`). Constants can also be set; for example, if your fabrication process does not allow for partial etching:
 
 ```
 >> gc.add_constant(1, 0.22e-6)
 ```
 
-This locks the first parameter (etch depth) to 0.22 μm when running the parametric sweep. As more variable parameters are added to each model, this will become more important.
+This locks the first parameter (etch depth) to 0.22 μm when running the solver. As more variable parameters are added to each model, this will become more important.
 
 ## The Library
 **Note:** These models are works in progress. The parameters of each device, simulation, and trained network may be changed at any time as we continue to improve on the platform. Many (if not all) of the constant parameters will become variable parameters. This will make the model useful for a broader range of applications. Please refer to the following list for detailed information on each model.
@@ -79,14 +79,14 @@ The silicon-on-insulator (SOI) grating coupler is a fundamental component in sil
 
 Variable Parameter | Range
 ------------------ | ----
-Etch Depth | 0 to 0.22 μm
-Duty Cycle | 0.6 to 0.7
-Pitch | 0.5 to 0.7 μm
+1. Etch Depth | 0 to 0.22 μm
+2. Duty Cycle | 0.6 to 0.7
+3. Pitch | 0.5 to 0.7 μm
 
 Output | Unit | Type
 ------ | ---- | ----
-Max Transmission | N/A | 1x1 Double
-Center Wavelength | m | 1x1 Double
+1. Max Transmission | N/A | 1x1 Double
+2. Center Wavelength | m | 1x1 Double
 
 Constant Parameter | Value
 ------------------ | -----
@@ -121,13 +121,13 @@ Test Error | 8.2%
 ### ring_resonator_SOI
 Variable Parameter | Range
 ------------------ | ----
-Radius | 4 to 7 μm
-Gap | 50 to 200 nm
+1. Radius | 4 to 7 μm
+2. Gap | 50 to 200 nm
 
 Output | Unit | Type
 ------ | ---- | ----
-Max Transmission | N/A | 1x1 Double
-Center Wavelength | m | 1x1 Double
+1. Max Transmission | N/A | 1x1 Double
+2. Center Wavelength | m | 1x1 Double
 
 Constant Parameter | Value
 ------------------ | -----
