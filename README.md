@@ -79,14 +79,14 @@ The silicon-on-insulator (SOI) grating coupler is a fundamental component in sil
 
 Variable Parameter | Range
 ------------------ | ----
-1. Etch Depth | 0 to 0.22 μm
-2. Duty Cycle | 0.6 to 0.7
-3. Pitch | 0.5 to 0.7 μm
+Etch Depth | 0 to 0.22 μm
+Duty Cycle | 0.6 to 0.7
+Pitch | 0.5 to 0.7 μm
 
 Output | Unit | Type
 ------ | ---- | ----
-1. Max Transmission | N/A | 1x1 Double
-2. Center Wavelength | m | 1x1 Double
+Max Transmission | N/A | 1x1 Double
+Center Wavelength | m | 1x1 Double
 
 Constant Parameter | Value
 ------------------ | -----
@@ -121,13 +121,13 @@ Test Error | 8.2%
 ### ring_resonator_SOI
 Variable Parameter | Range
 ------------------ | ----
-1. Radius | 4 to 7 μm
-2. Gap | 50 to 200 nm
+Radius | 4 to 7 μm
+Gap | 50 to 200 nm
 
 Output | Unit | Type
 ------ | ---- | ----
-1. Max Transmission | N/A | 1x1 Double
-2. Center Wavelength | m | 1x1 Double
+Max Transmission | N/A | 1x1 Double
+Center Wavelength | m | 1x1 Double
 
 Constant Parameter | Value
 ------------------ | -----
