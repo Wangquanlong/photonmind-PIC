@@ -75,13 +75,15 @@ This locks the first parameter (etch depth) to 0.22 μm when running the solver.
 ### grating_coupler_SOI
 The silicon-on-insulator (SOI) grating coupler is a fundamental component in silicon photonics. It offers a convenient way to couple light between an optical fibre and a photonic chip; however, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SOI` model, new designs can be found instantaneously.
 
-`grating_coupler_SOI` is a focusing grating that is trained with the variable parameters in the table below.
+`grating_coupler_SOI` is a focusing grating that is trained using the following:
 
 Variable Parameter | Range
 ------------------ | ----
 Etch Depth | 0 to 0.22 μm
-Duty Cycle | 0.6 to 0.7
-Pitch | 0.5 to 0.7 μm
+Duty Cycle | 0.4 to 0.7
+Pitch | 0.4 to 0.7 μm
+
+**Note:** The variable parameter boundaries are extended by 10% in training to achieve better accuracy.
 
 Output | Unit | Type
 ------ | ---- | ----
@@ -95,16 +97,15 @@ Excited Mode | TM0
 Core Material | Silicon
 Core Thickness | 0.22 μm
 Top Cladding Material | Silicon Dioxide
-Top Cladding Thickness | ∞
+Top Cladding Thickness | > Simulation Window
 Bottom Cladding Material | Silicon Dioxide
-Bottom Cladding Thickness | 3 μm
-Taper Length | 25 μm
-Taper Width | 15 μm
-Number of Gratings |
+Bottom Cladding Thickness | 1 μm
 Radius of Grating | 25 μm
 Waveguide Width | 0.5 μm
 Fiber Angle | 13°
-Fiber–Grating Gap | 1 μm
+Fiber Height | 1 μm
+
+**Note:** All material models are provided by the solver.
 
 Simulation Parameter | Value
 -------------------- | -----
@@ -116,41 +117,10 @@ Time | Autoshutoff
 
 Training Results | Value
 ---------------- | -----
-Test Error | 8.2%
+Test Error | 8.6%
 
 ### ring_resonator_SOI
-Variable Parameter | Range
------------------- | ----
-Radius | 4 to 7 μm
-Gap | 50 to 200 nm
-
-Output | Unit | Type
------- | ---- | ----
-Max Transmission | N/A | 1x1 Double
-Center Wavelength | m | 1x1 Double
-
-Constant Parameter | Value
------------------- | -----
-Wavelength Range | 1.4 to 1.7 μm
-Excited Mode | TE0
-Core Material | Silicon
-Core Thickness | 0.22 μm
-Top Cladding Material | Silicon Dioxide
-Top Cladding Thickness | ∞
-Bottom Cladding Material | Silicon Dioxide
-Bottom Cladding Thickness | 3 μm
-
-Simulation Parameter | Value
--------------------- | -----
-Solver | Lumerical varFDTD
-Dimension | 2.5D
-Mesh Size | ~6 Mesh Points per Wavelength
-Boundary Type | PML
-Time | Autoshutoff
-
-Training Results | Value
----------------- | -----
-Test Error |
+*This model is currently being developed.*
 
 ## License
 This project is licensed under the Apache-2.0 License - see the [LICENSE](LICENSE) file for details
