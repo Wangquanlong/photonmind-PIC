@@ -11,6 +11,8 @@ classdef Device < handle
             obj.model = model;
         end
 
+        % constants keep certain features locked in the sweep solver
+        % these two methods add and remove constants by indexing
         function add_constant(obj, index, constant)
             if index > length(obj.model.inputs), error('Index out of input range'); end
             obj.constants(index).value = constant;
@@ -20,6 +22,9 @@ classdef Device < handle
             obj.constants(index).value = [];
         end
 
+        % conditions are what the sweep solver looks for
+        % the use picks a value and some tolerance they will allow
+        % these two methods add and remove constants by indexing
         function add_condition(obj, index, value, tolerance)
             if index > length(obj.model.outputs), error('Index out of output range'); end
             obj.conditions(index).value = value;
@@ -34,8 +39,7 @@ classdef Device < handle
         % simple parametric sweep that finds all device matches
         % sweep size grows exponentially with resolution
         function solve(obj, resolution)
-            if isempty(obj.conditions), error('Must have at least one condition'); end
-
+            if isempty(obj.conditions), error('Must have at least one condition to solve for'); end
             v = waitbar(0, 'Solving...');
 
             obj.matches = {};
@@ -47,7 +51,7 @@ classdef Device < handle
                 labels = obj.model.infer(features);
                 if obj.check_conditions(labels)
                     obj.matches{end + 1} = features;
-                    obj.print_device(features, labels, length(obj.matches));
+                    obj.print_device(features, labels);
                 end
             end
             close(v);
@@ -98,9 +102,9 @@ classdef Device < handle
         end
 
         % print information about the found device
-        function print_device(obj, features, labels, match_num)
+        function print_device(obj, features, labels)
             fprintf('\n');
-            disp(['Match #', num2str(match_num)]);
+            disp(['Match #', num2str(length(obj.matches))]);
             for n = 1:length(obj.model.inputs)
                 disp([obj.model.inputs(n).parameter, ' = ', num2str(features(n))]);
             end
