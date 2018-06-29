@@ -117,7 +117,7 @@ Time | Autoshutoff
 
 Training Results | Value
 ---------------- | -----
-Test Error | 7.6%
+Test Error | 8.6%
 
 ### grating_coupler_SWG_SOI
 The silicon-on-insulator (SOI) subwavelength grating (SWG) coupler offers reduced coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SWG_SOI` model, new designs can be found instantaneously.
