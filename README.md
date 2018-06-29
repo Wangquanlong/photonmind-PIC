@@ -87,7 +87,7 @@ Pitch | 0.4 to 0.7 μm
 
 Output | Unit | Type
 ------ | ---- | ----
-Max Transmission | N/A | 1x1 Double
+Max Transmission | a.u. | 1x1 Double
 Center Wavelength | m | 1x1 Double
 
 Constant Parameter | Value
@@ -111,7 +111,7 @@ Simulation Parameter | Value
 -------------------- | -----
 Solver | Lumerical FDTD
 Dimension | 3D
-Mesh Size | ~6 Mesh Points per Wavelength
+Mesh Size | 6 Mesh Points per Wavelength
 Boundary Type | PML
 Time | Autoshutoff
 
@@ -120,22 +120,22 @@ Training Results | Value
 Test Error | 8.6%
 
 ### grating_coupler_SWG_SOI
-The silicon-on-insolator (SOI) subwavelength-grating (SWG) coupler provides a way to reduce coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SWG_SOI` model, new designs can be found instantaneously.
+The silicon-on-insulator (SOI) subwavelength grating (SWG) coupler offers reduced coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SWG_SOI` model, new designs can be found instantaneously.
 
 `grating_coupler_SWG_SOI` is a straight grating that is trained using the following:
 
 Variable Parameter | Range
 ------------------ | ----
-Fiber Angle | 
-Pitch |
-Grating Duty Cycle |
-SWG Fill Factor |
+Fiber Angle | 8° to 25°
+Pitch | 0.5 to 1.5 μm
+Grating Duty Cycle | 0.4 to 0.8
+SWG Fill Factor | 0.2 to 0.6
 
 **Note:** The variable parameter boundaries are extended by 10% in training to achieve better accuracy.
 
 Output | Unit | Type
 ------ | ---- | ----
-Max Transmission | N/A | 1x1 Double
+Max Transmission | a.u. | 1x1 Double
 Center Wavelength | m | 1x1 Double
 
 Constant Parameter | Value
@@ -156,7 +156,7 @@ Simulation Parameter | Value
 -------------------- | -----
 Solver | Lumerical FDTD
 Dimension | 2D
-Mesh Size |
+Mesh Size | 18 Mesh Points per Wavelength
 Boundary Type | PML
 Time | Autoshutoff
 
