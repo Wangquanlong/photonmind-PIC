@@ -99,7 +99,7 @@ Core Thickness | 0.22 μm
 Top Cladding Material | Silicon Dioxide
 Top Cladding Thickness | > Simulation Window
 Bottom Cladding Material | Silicon Dioxide
-Bottom Cladding Thickness | 1 μm
+Bottom Cladding Thickness | 2 μm
 Radius of Grating | 25 μm
 Waveguide Width | 0.5 μm
 Fiber Angle | 13°
@@ -118,6 +118,51 @@ Time | Autoshutoff
 Training Results | Value
 ---------------- | -----
 Test Error | 8.6%
+
+### grating_coupler_SWG_SOI
+The silicon-on-insolator (SOI) subwavelength-grating (SWG) coupler provides a way to reduce coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SWG_SOI` model, new designs can be found instantaneously.
+
+`grating_coupler_SWG_SOI` is a straight grating that is trained using the following:
+
+Variable Parameter | Range
+------------------ | ----
+Fiber Angle | 
+Pitch |
+Grating Duty Cycle |
+SWG Fill Factor |
+
+**Note:** The variable parameter boundaries are extended by 10% in training to achieve better accuracy.
+
+Output | Unit | Type
+------ | ---- | ----
+Max Transmission | N/A | 1x1 Double
+Center Wavelength | m | 1x1 Double
+
+Constant Parameter | Value
+------------------ | -----
+Wavelength Range | 1.2 to 1.8 μm
+Excited Mode | TM0
+Core Material | Silicon
+Core Thickness | 0.22 μm
+Top Cladding Material | Silicon Dioxide
+Top Cladding Thickness | > Simulation Window
+Bottom Cladding Material | Silicon Dioxide
+Bottom Cladding Thickness | 3 μm
+Fiber Height | 0 μm
+
+**Note:** All material models are provided by the solver.
+
+Simulation Parameter | Value
+-------------------- | -----
+Solver | Lumerical FDTD
+Dimension | 2D
+Mesh Size |
+Boundary Type | PML
+Time | Autoshutoff
+
+Training Results | Value
+---------------- | -----
+Test Error | 8.0%
 
 ### ring_resonator_SOI
 *This model is currently being developed.*
