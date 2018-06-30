@@ -70,6 +70,11 @@ The information of each device that matches the condition is printed. As the res
 This locks the first parameter (etch depth) to 0.22 μm when running the solver. As more variable parameters are added to each model, this will become more important.
 
 ## The Library
+- `grating_coupler_SOI`
+- `grating_coupler_SWG_SOI`
+- `grating_coupler_SWG_SOI_20deg`
+- `ring_resonator_SOI`
+
 **Note:** These models are works in progress. The parameters of each device, simulation, and trained network may be changed at any time as we continue to improve on the platform. Many (if not all) of the constant parameters will become variable parameters. This will make the model useful for a broader range of applications. Please refer to the following list for detailed information on each model.
 
 ### grating_coupler_SOI
@@ -159,6 +164,50 @@ Time | Fields Fully Decay
 Training Results | Value
 ---------------- | -----
 Test Error | 8.0%
+
+**Note:** The test error is found by running inference on 15% of the dataset (that the model has not seen) and averaging the error.
+
+### grating_coupler_SWG_SOI_20deg
+This model fixes the fiber angle of `grating_coupler_SWG_SOI` to 20°. Although not as robust, this model offers better test accuracy while the other is still being improved.
+
+`grating_coupler_SWG_SOI_20deg` is a straight grating that is trained using the following:
+
+Variable Parameter | Range
+------------------ | ----
+Pitch | 0.5 to 1.5 μm
+Grating Duty Cycle | 0.4 to 0.8
+SWG Fill Factor | 0.2 to 0.6
+
+Output | Unit | Type
+------ | ---- | ----
+Max Transmission | a.u. | 1x1 Double
+Center Wavelength | m | 1x1 Double
+
+Constant Parameter | Value
+------------------ | -----
+Wavelength Range | 1.2 to 1.8 μm
+Excited Mode | TM<sub>0</sub>
+Core Material | Silicon
+Core Thickness | 0.22 μm
+Top Cladding Material | Silicon Dioxide
+Bottom Cladding Material | Silicon Dioxide
+Bottom Cladding Thickness | 3 μm
+Fiber Angle | 20°
+Fiber-Grating Gap | 0 μm
+
+**Note:** All material models are provided by the solver.
+
+Simulation Parameter | Value
+-------------------- | -----
+Solver | Lumerical FDTD
+Dimension | 2D
+Mesh Size | 18 Mesh Points per Wavelength
+Boundary Type | PML
+Time | Fields Fully Decay
+
+Training Results | Value
+---------------- | -----
+Test Error |
 
 **Note:** The test error is found by running inference on 15% of the dataset (that the model has not seen) and averaging the error.
 
