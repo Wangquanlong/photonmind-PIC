@@ -31,7 +31,7 @@ classdef Model < handle
             y = obj.descale_labels(y);
         end
 
-        % quickly display relevant information about the trained model
+        % display relevant information about the trained model
         function about(obj)
             disp('Inputs');
             for n = 1:length(obj.inputs)
@@ -59,7 +59,8 @@ classdef Model < handle
 
         % activation functions used in inference
         % 'tanh' should only be used for networks that use -1 to 1 scaling
-        % 'none' is usually used in the input and output layers
+        % 'none' is only used in the input and output layers
+        % 'lrelu' and 'elu' might be useful for vanishing gradients
         % more functions are welcome, but these seem to be the most popular for regression
         function y = ACT(obj, x, activation_function)
             switch activation_function
@@ -67,6 +68,18 @@ classdef Model < handle
                     y = 1./(1 + exp(-x));
                 case 'relu'
                     y = max(0, x);
+                case 'lrelu'
+                    if x > 0
+                      y = x;
+                    else
+                      y = 0.01*x;
+                    end
+                case 'elu'
+                    if x > 0
+                      y = x;
+                    else
+                      y = exp(x) - 1;
+                    end
                 case 'tanh'
                     y = tanh(x);
                 case 'none'

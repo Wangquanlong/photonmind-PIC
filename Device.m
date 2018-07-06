@@ -12,7 +12,7 @@ classdef Device < handle
         end
 
         % constants keep certain features locked in the sweep solver
-        % these two methods add and remove constants by indexing
+        % these next two methods add and remove constants by indexing
         function add_constant(obj, index, constant)
             if index > length(obj.model.inputs), error('Index out of input range'); end
             obj.constants(index).value = constant;
@@ -22,9 +22,15 @@ classdef Device < handle
             obj.constants(index).value = [];
         end
 
+        function remove_all_constants(obj)
+            for n = 1:length(obj.constants)
+                obj.constants(n) = [];
+            end
+        end
+
         % conditions are what the sweep solver looks for
         % the use picks a value and some tolerance they will allow
-        % these two methods add and remove constants by indexing
+        % these next two methods add and remove constants by indexing
         function add_condition(obj, index, value, tolerance)
             if index > length(obj.model.outputs), error('Index out of output range'); end
             obj.conditions(index).value = value;
@@ -32,8 +38,13 @@ classdef Device < handle
         end
 
         function remove_condition(obj, index)
-            obj.conditions(index).value = [];
-            obj.conditions(index).tolerance = [];
+            obj.conditions(index) = [];
+        end
+
+        function remove_all_conditions(obj)
+            for n = 1:length(obj.conditions)
+                obj.conditions(n) = [];
+            end
         end
 
         % simple parametric sweep that finds all device matches
