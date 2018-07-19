@@ -121,15 +121,15 @@ Time | Fields Fully Decay
 Training Results | Value
 ---------------- | -----
 Error | 7.7%
-Inference Time |
+Inference Time | 0.011 s
 
 **Note:** The error is found by running inference on 15% of the dataset (that the model has not seen) and averaging the error.
 
-### grating_coupler_SWG_SOI_pol_ins
+### grating_coupler_SOI_SWG_pol_ins
 **Status:** 6.8% Error `Validated`<br/>
-The silicon-on-insulator (SOI) subwavelength grating (SWG) coupler offers reduced coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SWG_SOI_pol_ins` model, new designs can be found instantaneously. This model adds polarization-insensitive capabilities by splitting the fundamental-order polarizations counter-directionally at the grating level.
+The silicon-on-insulator (SOI) subwavelength grating (SWG) coupler offers reduced coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SOI_SWG_pol_ins` model, new designs can be found instantaneously. This model adds polarization-insensitive capabilities by splitting the fundamental-order polarizations counter-directionally at the grating level.
 
-`grating_coupler_SWG_SOI_pol_ins` is a straight grating that is trained using the following:
+`grating_coupler_SOI_SWG_pol_ins` is a straight grating that is trained using the following:
 
 Variable Parameter | Range
 ------------------ | ----
