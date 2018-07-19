@@ -71,17 +71,17 @@ This locks the first parameter (etch depth) to 0.22 μm when running the solver.
 
 ## The Library
 - `grating_coupler_SOI`
-- `grating_coupler_SWG_SOI`
-- `grating_coupler_SWG_SOI_20deg`
+- `grating_coupler_SOI_SWG_pol_ins`
 - `ring_resonator_SOI`
+- `ring_modulator_SOI`
 
 **Note:** These models are works in progress. The parameters of each device, simulation, and trained network may be changed at any time as we continue to improve on the platform. Many (if not all) of the constant parameters will become variable parameters. This will make the model useful for a broader range of applications. Please refer to the following list for detailed information on each model.
 
 ### grating_coupler_SOI
-**Status:** 8.6% Test Error `Not Validated`<br/>
+**Status:** 7.7% Error `Validated`<br/>
 The silicon-on-insulator (SOI) grating coupler is a fundamental component in silicon photonics. It offers a convenient way to couple light between an optical fibre and a photonic chip; however, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SOI` model, new designs can be found instantaneously.
 
-`grating_coupler_SOI` is a focusing grating that is trained using the following:
+`grating_coupler_SOI` is a focusing-style grating that is trained using the following:
 
 Variable Parameter | Range
 ------------------ | ----
@@ -120,34 +120,38 @@ Time | Fields Fully Decay
 
 Training Results | Value
 ---------------- | -----
-Test Error | 8.6%
+Error | 7.7%
+Inference Time |
 
-**Note:** The test error is found by running inference on 15% of the dataset (that the model has not seen) and averaging the error.
+**Note:** The error is found by running inference on 15% of the dataset (that the model has not seen) and averaging the error.
 
-### grating_coupler_SWG_SOI
-**Status:** 8.0% Test Error `Not Validated`<br/>
-The silicon-on-insulator (SOI) subwavelength grating (SWG) coupler offers reduced coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SWG_SOI` model, new designs can be found instantaneously.
+### grating_coupler_SWG_SOI_pol_ins
+**Status:** 6.8% Error `Validated`<br/>
+The silicon-on-insulator (SOI) subwavelength grating (SWG) coupler offers reduced coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SWG_SOI_pol_ins` model, new designs can be found instantaneously. This model adds polarization-insensitive capabilities by splitting the fundamental-order polarizations counter-directionally at the grating level.
 
-`grating_coupler_SWG_SOI` is a straight grating that is trained using the following:
+`grating_coupler_SWG_SOI_pol_ins` is a straight grating that is trained using the following:
 
 Variable Parameter | Range
 ------------------ | ----
-Fiber Angle | 8° to 25°
+Polarization | TE<sub>0</sub> and TM<sub>0</sub>
+Fiber Angle | 5° to 20°
 Pitch | 0.5 to 1.5 μm
 Grating Duty Cycle | 0.4 to 0.8
 SWG Fill Factor | 0.2 to 0.6
 
 Output | Unit | Type
 ------ | ---- | ----
-Max Transmission | a.u. | 1x1 Double
-Center Wavelength | m | 1x1 Double
+Max Transmission Left | a.u. | 1x1 Double
+Max Transmission Right | a.u. | 1x1 Double
+Center Wavelength Left | m | 1x1 Double
+Center Wavelength Right | m | 1x1 Double
 
 Constant Parameter | Value
 ------------------ | -----
-Wavelength Range | 1.2 to 1.8 μm
-Excited Mode | TM<sub>0</sub>
+Wavelength Range | 1.3 to 1.7 μm
 Core Material | Silicon
 Core Thickness | 0.22 μm
+Etch Depth | 0.22 μm
 Top Cladding Material | Silicon Dioxide
 Bottom Cladding Material | Silicon Dioxide
 Bottom Cladding Thickness | 3 μm
@@ -165,56 +169,16 @@ Time | Fields Fully Decay
 
 Training Results | Value
 ---------------- | -----
-Test Error | 8.0%
+Test Error | 6.8%
+Inference Time | 0.013 s
+Acceleration Factor | 1,830
 
-**Note:** The test error is found by running inference on 15% of the dataset (that the model has not seen) and averaging the error.
-
-### grating_coupler_SWG_SOI_20deg
-**Status:** `Not Validated`<br/>
-This model fixes the fiber angle of `grating_coupler_SWG_SOI` to 20°. Although not as robust, this model offers better test accuracy while the other is still being improved.
-
-`grating_coupler_SWG_SOI_20deg` is a straight grating that is trained using the following:
-
-Variable Parameter | Range
------------------- | ----
-Pitch | 0.5 to 1.5 μm
-Grating Duty Cycle | 0.4 to 0.8
-SWG Fill Factor | 0.2 to 0.6
-
-Output | Unit | Type
------- | ---- | ----
-Max Transmission | a.u. | 1x1 Double
-Center Wavelength | m | 1x1 Double
-
-Constant Parameter | Value
------------------- | -----
-Wavelength Range | 1.2 to 1.8 μm
-Excited Mode | TM<sub>0</sub>
-Core Material | Silicon
-Core Thickness | 0.22 μm
-Top Cladding Material | Silicon Dioxide
-Bottom Cladding Material | Silicon Dioxide
-Bottom Cladding Thickness | 3 μm
-Fiber Angle | 20°
-Fiber-Grating Gap | 0 μm
-
-**Note:** All material models are provided by the solver.
-
-Simulation Parameter | Value
--------------------- | -----
-Solver | Lumerical FDTD
-Dimension | 2D
-Mesh Size | 18 Mesh Points per Wavelength
-Boundary Type | PML
-Time | Fields Fully Decay
-
-Training Results | Value
----------------- | -----
-Test Error |
-
-**Note:** The test error is found by running inference on 15% of the dataset (that the model has not seen) and averaging the error.
+**Note:** The error is found by running inference on 15% of the dataset (that the model has not seen) and averaging the error.
 
 ### ring_resonator_SOI
+*This model is currently being developed.*
+
+### ring_modulator_SOI
 *This model is currently being developed.*
 
 ## License
