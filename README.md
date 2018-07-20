@@ -80,7 +80,7 @@ This locks the first parameter (etch depth) to 0.22 μm when running the solver.
 **Note:** These models are works in progress. The parameters of each device, simulation, and trained network may be changed at any time as we continue to improve on the platform. Many (if not all) of the constant parameters will become variable parameters. This will make the model useful for a broader range of applications. Please refer to the following list for detailed information on each model.
 
 ### grating_coupler_SOI
-**Status:** 7.7% Error `Validated`<br/>
+**Status:** 7.7% Error<br/>
 The silicon-on-insulator (SOI) grating coupler is a fundamental component in silicon photonics. It offers a convenient way to couple light between an optical fibre and a photonic chip; however, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SOI` model, new designs can be found instantaneously.
 
 `grating_coupler_SOI` is a focusing-style grating that is trained using the following:
@@ -128,7 +128,7 @@ Inference Time | 0.011 s
 **Note:** The error is found by running inference on 15% of the dataset (that the model has not seen) and averaging the error.
 
 ### grating_coupler_SOI_SWG_pol_ins
-**Status:** 6.8% Error `Validated`<br/>
+**Status:** 6.8% Error<br/>
 The silicon-on-insulator (SOI) subwavelength grating (SWG) coupler offers reduced coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SOI_SWG_pol_ins` model, new designs can be found instantaneously. This model adds polarization-insensitive capabilities by splitting the fundamental-order polarizations counter-directionally at the grating level.
 
 **Important:** The first feature (polarization) must be set as a constant (0 for TE; 1 for TM). The solver will take it as continuous otherwise—which doesn't make sense.
