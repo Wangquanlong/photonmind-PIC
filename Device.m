@@ -58,11 +58,11 @@ classdef Device < handle
 
             for n = 1:length(featureset)
                 waitbar(n/length(featureset));
-                features = featureset(n, :);
-                labels = obj.model.infer(features);
+                inputs = featureset(n, :);
+                labels = obj.model.infer(inputs);
                 if obj.check_conditions(labels)
-                    obj.matches{end + 1} = features;
-                    obj.print_device(features, labels);
+                    obj.matches{end + 1} = inputs;
+                    obj.print_device(inputs, labels);
                 end
             end
             close(v);
@@ -90,7 +90,7 @@ classdef Device < handle
                 sequence = linspace(obj.model.inputs(n).range(1),...
                 obj.model.inputs(n).range(2), resolution);
                 sequence = repmat(sequence, [resolution^(length(obj.model.inputs) - n), 1]);
-                featureset(n, :) = repmat(sequence(:), [resolution^(n - 1), 1]);
+                featureset(n, :) = repmat(sequence(:), [resolution^(n - 1), 1]); %#ok
             end
 
             for n = 1:length(obj.constants)
