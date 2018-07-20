@@ -29,7 +29,7 @@ classdef Device < handle
         end
 
         % conditions are what the sweep solver looks for
-        % the use picks a value and some tolerance they will allow
+        % the user picks a value and some tolerance they will allow
         % these next two methods add and remove constants by indexing
         function add_condition(obj, index, value, tolerance)
             if index > length(obj.model.outputs), error('Index out of output range'); end
@@ -74,7 +74,7 @@ classdef Device < handle
             obj.features = cell2mat(obj.matches(match_num));
         end
 
-        % predicts the output based on the features of the device
+        % predicts the output based on the selected features of the device
         function run(obj)
             if isempty(obj.features), error('No features have been set for this device'); end
             y = obj.model.infer(obj.features);

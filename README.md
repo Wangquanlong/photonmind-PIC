@@ -131,6 +131,8 @@ Inference Time | 0.011 s
 **Status:** 6.8% Error `Validated`<br/>
 The silicon-on-insulator (SOI) subwavelength grating (SWG) coupler offers reduced coupling reflections (i.e., insertion loss) for single-etch devices. Like `grating_coupler_SOI`, its performance is highly dependent on the wavelength, polarization, and angle of the incident light (among other factors). Should any of these factors change, a new design must be made—often taking many hours to do by conventional means. With PhotonMind-PIC and the `grating_coupler_SOI_SWG_pol_ins` model, new designs can be found instantaneously. This model adds polarization-insensitive capabilities by splitting the fundamental-order polarizations counter-directionally at the grating level.
 
+**Important:** The first feature (polarization) must be set as a constant (0 for TE; 1 for TM). The solver will take it as continuous otherwise—which doesn't make sense.
+
 `grating_coupler_SOI_SWG_pol_ins` is a straight grating that is trained using the following:
 
 Variable Parameter | Range
